@@ -1,7 +1,8 @@
-#include <iostream>
-using namespace std;
 //comentario eduardo
 //comentario jeyfreth
+#include <iostream>
+using namespace std;
+
 int main() { 
     
     system("pause");
