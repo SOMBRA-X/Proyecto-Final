@@ -3,6 +3,7 @@
 //comentario ivan
 
 
+
 /* Códigos ANSI de los Colores Seleccionados
 \033[3 → Celeste
 \033[7 → Blanco
@@ -50,6 +51,7 @@ int main(){
 
     
     
+
     
     system("pause");
     cout << "\033[2J\033[H";
