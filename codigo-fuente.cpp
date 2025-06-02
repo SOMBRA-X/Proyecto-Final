@@ -55,15 +55,15 @@ int main(){
     cin >> alumnos;                                 //J
     cin.ignore();                                  
 
-      // Declarar arreglos para los datos de los alumnos
-string nombres[alumnos];
-string apellido1[alumnos];
-string apellido2[alumnos];
-string cedulas[alumnos];
-string cursos[alumnos];
+// Declarar arreglos para los datos de los alumnos
+    string nombres[alumnos];                        //de aquii a la (//E) hecho por Eduardo
+    string apellido1[alumnos];
+    string apellido2[alumnos];
+    string cedulas[alumnos];
+    string cursos[alumnos];
 int notas[alumnos][examenes];
 
-
+                                                    
        // Ingresar los datos de cada alumno
     for(int i = 0; i < alumnos; i++) {
         setColor(3);
@@ -107,7 +107,7 @@ int notas[alumnos][examenes];
         }
         double promedio = static_cast<double>(suma) / examenes;
         cout << "El promedio del alumno " << i+1 << " es: " << promedio << endl;
-    }
+    }                                               //E
 
 
     
