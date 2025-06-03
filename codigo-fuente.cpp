@@ -49,7 +49,9 @@ bool soloNumeros(const string& s) {
 
 int main(){ 
 
-    
+    char repetir;
+    do{
+
 
 
     setColor(3);
@@ -170,9 +172,12 @@ double notas[alumnos][examenes];
         cout<<fixed<<setprecision(2); // Establece 2 decimales
         cout << "El promedio del alumno " << i+1 << " es: " << promedio << endl;
     }                                               //E
-
-
-    
+setColor(7);
+        cout << endl << endl;
+        cout << "¿Desea evaluar otro grupo de alumnos? (s/n): ";
+        cin >> repetir;
+        cin.ignore();
+    }while (repetir == 's' || repetir == 'S');
     system("pause");
     cout << "\033[2J\033[H";
     
