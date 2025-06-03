@@ -15,6 +15,7 @@
 #include <windows.h>
 #include <string>
 #include <cstdlib>
+#include <iomanip>
 using namespace std;
 
 
@@ -61,7 +62,7 @@ int main(){
     string apellido2[alumnos];
     string cedulas[alumnos];
     string cursos[alumnos];
-int notas[alumnos][examenes];
+double notas[alumnos][examenes];
 
                                                     
        // Ingresar los datos de cada alumno
@@ -101,11 +102,12 @@ int notas[alumnos][examenes];
 
     // Calcular y mostrar el promedio de cada alumno
     for(int i = 0; i < alumnos; i++) {
-        int suma = 0;
+        double suma = 0.0;
         for(int j = 0; j < examenes; j++) {
             suma += notas[i][j];
         }
-        double promedio = static_cast<double>(suma) / examenes;
+        double promedio = suma / 5.0;
+        cout<<fixed<<setprecision(2); // Establece 2 decimales
         cout << "El promedio del alumno " << i+1 << " es: " << promedio << endl;
     }                                               //E
 
