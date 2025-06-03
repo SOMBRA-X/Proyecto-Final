@@ -139,6 +139,7 @@ do {                                           //de aqui hice el bucle para el c
         } while (ciclos[i].empty());
 
         // Notas
+        bool validInput=true;
         setColor(3);
         cout << "Ingrese las notas de los 5 examenes:" << endl;
         for(int j = 0; j < examenes; j++) {
@@ -150,11 +151,15 @@ do {                                           //de aqui hice el bucle para el c
                 if(cin.fail() || notas[i][j] < 0 || notas[i][j] > 100) {
                     cin.clear();
                     cin.ignore(1000, '\n');
+                    validInput = false;
                     setColor(4);
-                    cout << "El dato ingresado es invalido. Solo numeros (0-100). Intente de nuevo: ";
+                    cout << "El dato ingresado es invalido. Solo numeros (0-100). aprete cualquier tecla para intentar de nuevo: ";
+                    cin.ignore();
                     setColor(3);
+                }else {
+                    validInput = true;
                 }
-            } while(cin.fail() || notas[i][j] < 0 || notas[i][j] > 100);
+            } while(!validInput);
         }                                   //I
         cin.ignore();
         cout << "\033[2J\033[H";
