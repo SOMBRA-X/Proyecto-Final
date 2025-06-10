@@ -61,7 +61,7 @@ do {                                           //de aqui hice el bucle para el c
         getline(cin, alumnosStr);
         if (!soloNumeros(alumnosStr) || alumnosStr.empty()) {
             setColor(4);
-            cout << "El dato ingresado es invalido. Solo numeros. Intente de nuevo: ";
+            cout << "El dato ingresado es invalido. Solo numeros. Intente de nuevo: "<< endl;
             setColor(7);
         }
     } while (!soloNumeros(alumnosStr) || alumnosStr.empty());
@@ -81,7 +81,7 @@ do {                                           //de aqui hice el bucle para el c
             getline(cin, nombres[i]);
             if (!soloLetras(nombres[i])) {
                 setColor(4);
-                cout << "El dato ingresado es invalido. Solo letras. Intente de nuevo: ";
+                cout << "El dato ingresado es invalido. Solo letras. Intente de nuevo: "<< endl;
                 setColor(3);
             }
         } while (!soloLetras(nombres[i]));
@@ -94,7 +94,7 @@ do {                                           //de aqui hice el bucle para el c
             getline(cin, apellido1[i]);
             if (!soloLetras(apellido1[i])) {
                 setColor(4);
-                cout << "El dato ingresado es invalido. Solo letras. Intente de nuevo: ";
+                cout << "El dato ingresado es invalido. Solo letras. Intente de nuevo: "<< endl;
                 setColor(3);
             }
         } while (!soloLetras(apellido1[i]));
@@ -107,7 +107,7 @@ do {                                           //de aqui hice el bucle para el c
             getline(cin, apellido2[i]);
             if (!soloLetras(apellido2[i])) {
                 setColor(4);
-                cout << "El dato ingresado es invalido. Solo letras. Intente de nuevo: ";
+                cout << "El dato ingresado es invalido. Solo letras. Intente de nuevo: "<< endl;
                 setColor(3);
             }
         } while (!soloLetras(apellido2[i]));
@@ -118,50 +118,48 @@ do {                                           //de aqui hice el bucle para el c
             cout << "Cedula: ";
             setColor(7);
             getline(cin, cedulas[i]);
-            if (!soloNumeros(cedulas[i]) || cedulas[i].length() > 9) {
+            // Solo acepta si tiene exactamente 9 dígitos y todos son números
+            if (!soloNumeros(cedulas[i]) || cedulas[i].length() != 9) {
                 setColor(4);
-                cout << "El dato ingresado es invalido. Solo numeros y maximo 9 digitos. Intente de nuevo: ";
+                cout << "El dato ingresado es invalido. Debe ingresar exactamente 9 numeros. Intente de nuevo: "<< endl;
                 setColor(3);
             }
-        } while (!soloNumeros(cedulas[i]) || cedulas[i].length() > 9);
+        } while (!soloNumeros(cedulas[i]) || cedulas[i].length() != 9);
 
         // ciclo
         do {
             setColor(3);
-            cout << "ciclos: ";
+            cout << "ciclo: ";
             setColor(7);
             getline(cin, ciclos[i]);
-            if (ciclos[i].empty()) {
+            if (!soloNumeros(ciclos[i]) || ciclos[i].empty() || stoi(ciclos[i]) <= 0 || stoi(ciclos[i]) > 2) {
                 setColor(4);
-                cout << "El dato ingresado es invalido. Intente de nuevo: ";
+                cout << "El dato ingresado es invalido. Solo se acepta 1 y 2. Intente de nuevo: "<< endl;
                 setColor(3);
             }
-        } while (ciclos[i].empty());
+        } while (!soloNumeros(ciclos[i]) || ciclos[i].empty() || stoi(ciclos[i]) <= 0 || stoi(ciclos[i]) > 2);
 
         // Notas
-        bool validInput=true;
         setColor(3);
         cout << "Ingrese las notas de los 5 examenes:" << endl;
         for(int j = 0; j < examenes; j++) {
+            string notaStr;
+            bool validInput = false;
             do {
                 setColor(3);
                 cout << "Nota del examen " << j+1 << ": ";
                 setColor(7);
-                cin >> notas[i][j];
-                if(cin.fail() || notas[i][j] < 0 || notas[i][j] > 100) {
-                    cin.clear();
-                    cin.ignore(1000, '\n');
-                    validInput = false;
+                getline(cin, notaStr);
+                validInput = soloNumeros(notaStr) && !notaStr.empty() && stod(notaStr) >= 0 && stod(notaStr) <= 100;
+                if (!validInput) {
                     setColor(4);
-                    cout << "El dato ingresado es invalido. Solo numeros (0-100). aprete cualquier tecla para intentar de nuevo: ";
-                    cin.ignore();
+                    cout << "El dato ingresado es invalido. Solo numeros (0-100). Intente de nuevo: "<< endl;
                     setColor(3);
-                }else {
-                    validInput = true;
                 }
-            } while(!validInput);
+            } while (!validInput);
+            notas[i][j] = stod(notaStr);
         }                                   //I
-        cin.ignore();
+        
         cout << "\033[2J\033[H";
     }                                       //E
 
